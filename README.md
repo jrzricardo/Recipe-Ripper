@@ -60,4 +60,5 @@ Please follow these guidelines:
 ## Contact
 
 Ricardo Juarez - [rjuarez@illinois.edu](mailto:rjuarez@illinois.edu)
+
 Project Link: [https://github.com/jrzricardo/recipe-ripper](https://github.com/jrzricardo/recipe-ripper)
