@@ -1,2 +1,4 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1><%= @recipe.dish_name %></h1>
+<h2>Ingredients:</h2>
+<pre><%= @recipe.ingredients %></pre>
+<%= link_to "Scrape Another", new_recipe_path %>

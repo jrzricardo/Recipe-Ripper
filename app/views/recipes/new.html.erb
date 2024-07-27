@@ -1,2 +1,6 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<h1>Scrape a Recipe</h1>
+<%= form_with(model:@recipe, local: true) do |form| %>
+  <%= form.label :url, "Recipe URL" %>
+  <%= form.text_field :url %>
+  <%= form.submit "Let it rip! %>
+<% end %>
