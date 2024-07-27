@@ -73,6 +73,8 @@ end
 
 # AppDev Gems
 # ===========
+gem "nokogiri"
+gem "httparty"
 gem "appdev_support"
 gem "awesome_print"
 gem "devise"
