@@ -1,5 +1,5 @@
 # Recipe Ripper
-No more scrolling, cooking
+No more scrolling, only cooking
 
 ## Description
 Recipe Ripper is a webapp that scrapes recipe webpages and returns just a recipe.
@@ -22,6 +22,7 @@ This is a basic version of the app, that scrapes html sites. Future versions wil
 3.  Install the following required gems:
 - `gem "nokogiri"`
 - `gem "httparty"`
+
 `bundle install`
 
 4.  Set up the database:
@@ -58,6 +59,5 @@ Please follow these guidelines:
 
 ## Contact
 
-Ricardo Juarez - [rjuarez@illinois.edu] (mailto:rjuarez@illinois.edu)
-Project Link: [https://github.com/jrzricardo/recipe-ripper]
-(https://github.com/jrzricardo/recipe-ripper)
+Ricardo Juarez - [rjuarez@illinois.edu](mailto:rjuarez@illinois.edu)
+Project Link: [https://github.com/jrzricardo/recipe-ripper](https://github.com/jrzricardo/recipe-ripper)
