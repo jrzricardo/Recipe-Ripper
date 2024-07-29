@@ -17,5 +17,8 @@
 #  owner_id  (owner_id => owners.id)
 #
 class Collection < ApplicationRecord
-  belongs_to :owner
+  belongs_to :owner, class_name: 'User'
+  has_many :recipe_collections
+  has_many :recipes, through: :recipe_collections
+  has_many :scraped_recipes
 end
