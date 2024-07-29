@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_27_234559) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_29_014521) do
+  create_table "collections", force: :cascade do |t|
+    t.string "title"
+    t.integer "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_collections_on_owner_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "item"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipe_collections", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_recipe_collections_on_collection_id"
+    t.index ["recipe_id"], name: "index_recipe_collections_on_recipe_id"
+  end
+
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "ingredient_id", null: false
+    t.string "measurement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "url"
     t.string "dish_name"
@@ -18,6 +51,34 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_27_234559) do
     t.text "directions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "prep_time"
+    t.string "total_time"
   end
 
+  create_table "scraped_recipes", force: :cascade do |t|
+    t.boolean "saved_recipe"
+    t.integer "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_scraped_recipes_on_collection_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "collections", "owners"
+  add_foreign_key "recipe_collections", "collections"
+  add_foreign_key "recipe_collections", "recipes"
+  add_foreign_key "recipe_ingredients", "ingredients"
+  add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "scraped_recipes", "collections"
 end
