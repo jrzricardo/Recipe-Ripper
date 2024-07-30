@@ -7,6 +7,7 @@
 #  ingredients  :text
 #  instructions :text
 #  name         :string
+#  url          :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :integer          not null
@@ -43,7 +44,7 @@ class Recipe < ApplicationRecord
     recipe.author = extract_author(doc)
     recipe.ingredients = extract_ingredients(doc)
     recipe.instructions = extract_instructions(doc)
-    recipe.url = url
+    recipe.url = :url
 
     recipe
   end
