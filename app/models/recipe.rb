@@ -1,8 +1,38 @@
-require 'nokogiri'
-require 'httparty'
+# == Schema Information
+#
+# Table name: recipes
+#
+#  id           :integer          not null, primary key
+#  author       :string
+#  ingredients  :text
+#  instructions :text
+#  name         :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer          not null
+#
+# Indexes
+#
+#  index_recipes_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  user_id  (user_id => users.id)
+#
+class Recipe < ApplicationRecord
+  require 'nokogiri'
+  require 'httparty'
 
-class Recipe
-  attr_accessor :name, :author, :ingredients, :instructions, :url
+  belongs_to :user
+  
+  serialize :ingredients, Array
+  serialize :instructions, Array
+
+  validates :name, presence: true
+  validates :ingredients, presence: true
+  validates :instructions, presence: true
+
+
 
   def self.extract_from_url(url)
     response = HTTParty.get(url)
@@ -107,4 +137,5 @@ class Recipe
     end
     []
   end
+
 end
