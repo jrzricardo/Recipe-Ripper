@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-
+<h2>Author: <%= @recipe.author %></h2>
 <h2>Ingredients:</h2>
 <ul>
   <% @recipe.ingredients.each do |ingredient| %>
@@ -13,5 +13,9 @@
     <li><%= instruction %></li>
   <% end %>
 </ol>
+
+<h3>Recipe Source:
+<a href="<%= @recipe.url %>"><%= @recipe.url %></a>
+</h3>
 
 <%= link_to 'Back', root_path %>
