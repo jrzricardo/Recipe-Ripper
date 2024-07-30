@@ -1,12 +1,16 @@
-<h1>Recipes</h1>
+<h1>My Recipes</h1>
 
 <%= link_to 'Extract New Recipe', new_recipe_path %>
 
-<% @recipes.each do |recipe| %>
-  <div>
-    <h2><%= link_to recipe.name, recipe %></h2>
-    <p>By: <%= recipe.author %></p>
-    <%= link_to 'Edit', edit_recipe_path(recipe) %>
-    <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
+<% if @recipes.present? %>
+  <% @recipes.each do |recipe| %>
+    <div>
+      <h2><%= link_to recipe.name, recipe %></h2>
+      <p>By: <%= recipe.author %></p>
+      <%= link_to 'Edit', edit_recipe_path(recipe) %>
+      <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+<% else %>
+  <p>You haven't saved any recipes yet. Try extracting a new recipe!</p>
 <% end %>
