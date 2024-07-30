@@ -1,19 +1,24 @@
-<h1><%= @recipe.name %></h1>
+<h1><%= @recipe.persisted? ? "Saved Recipe" : "Extracted Recipe" %></h1>
+
+<h2><%= @recipe.name %></h2>
 <p>Author: <%= @recipe.author %></p>
 
-<h2>Ingredients:</h2>
+<h3>Ingredients:</h3>
 <ul>
   <% @recipe.ingredients.each do |ingredient| %>
     <li><%= ingredient %></li>
   <% end %>
 </ul>
 
-<h2>Instructions:</h2>
+<h3>Instructions:</h3>
 <ol>
   <% @recipe.instructions.each do |instruction| %>
     <li><%= instruction %></li>
   <% end %>
 </ol>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<% unless @recipe.persisted? %>
+  <%= button_to "Save This Recipe", save_recipe_path(@recipe), method: :post %>
+<% end %>
+
 <%= link_to 'Back', recipes_path %>
