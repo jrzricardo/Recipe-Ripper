@@ -1,16 +1,38 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :save]
 
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.recipes if user_signed_in?
   end
 
   def show
+    @recipe ||= Recipe.new(session[:extracted_recipe]) if session[:extracted_recipe]
   end
 
   def new
-    @recipe = current_user.recipes.build
+    @recipe = Recipe.new
+  end
+
+  def extract
+    url = params[:url]
+    extracted_recipe = Recipe.extract_from_url(url)
+    session[:extracted_recipe] = extracted_recipe.as_json
+    redirect_to recipe_path(id: 'new')
+  end
+
+  def save
+    if @recipe.persisted?
+      redirect_to @recipe, notice: 'Recipe already saved.'
+    else
+      @recipe = current_user.recipes.build(session[:extracted_recipe])
+      if @recipe.save
+        session.delete(:extracted_recipe)
+        redirect_to @recipe, notice: 'Recipe was successfully saved.'
+      else
+        render :show
+      end
+    end
   end
 
   def create
@@ -38,22 +60,12 @@ class RecipesController < ApplicationController
     redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
   end
 
-  def extract
-    url = params[:url]
-    extracted_recipe = Recipe.extract_from_url(url)
-    @recipe = current_user.recipes.build(
-      name: extracted_recipe.name,
-      author: extracted_recipe.author,
-      ingredients: extracted_recipe.ingredients,
-      instructions: extracted_recipe.instructions
-    )
-    render :new
-  end
+  
 
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id]) if params[:id] != 'new'
   end
 
   def recipe_params
