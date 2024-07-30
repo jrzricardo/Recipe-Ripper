@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resources :recipes do
     collection do
       post :extract
-      post :save_extracted
     end
+    member do
+      post :save
   end
+end
   root 'recipes#index'
 end
