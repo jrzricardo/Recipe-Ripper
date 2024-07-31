@@ -1,0 +1,9 @@
+<h1><%= @recipe.name %></h1>
+<p>Author: <%= @recipe.author %></p>
+<p>Serving Size: <%= @recipe.serving_size %></p>
+<p>Ingredients: <%= @recipe.ingredients %></p>
+<p>Instructions: <%= @recipe.instructions %></p>
+<%= link_to 'Back to Recipes', recipes_path %>
+<% if user_signed_in? %>
+  <%= button_to 'Save to Recipe Book', save_recipe_path(@recipe), method: :post %>
+<% end %>
