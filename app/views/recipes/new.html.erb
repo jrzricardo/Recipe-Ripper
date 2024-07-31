@@ -1,0 +1,8 @@
+<h1>Extract New Recipe</h1>
+
+<%= form_tag(extract_recipes_path, method: :post) do %>
+  <%= url_field_tag :url, nil, placeholder: 'Enter recipe URL', required: true %>
+  <%= submit_tag 'Extract Recipe' %>
+<% end %>
+
+<%= link_to 'Back', recipes_path %>
