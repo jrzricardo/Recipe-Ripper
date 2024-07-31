@@ -1,0 +1,10 @@
+<h1>Welcome to Recipe Ripper</h1>
+
+<% if user_signed_in? %>
+  <p>Hello, <%= current_user.email %>!</p>
+  <%= link_to 'View Recipes', recipes_path %>
+  <%= link_to 'View Your Recipe Book', recipe_books_path %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <p>Please <%= link_to 'Sign In', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %>.</p>
+<% end %>
