@@ -24,7 +24,7 @@ class Recipe < ApplicationRecord
   require 'nokogiri'
   require 'httparty'
 
-  belongs_to :user
+  belongs_to :user, optional: true
   
   serialize :ingredients, Array
   serialize :instructions, Array
@@ -39,14 +39,12 @@ class Recipe < ApplicationRecord
     response = HTTParty.get(url)
     doc = Nokogiri::HTML(response.body)
 
-    recipe = self.new
-    recipe.name = extract_name(doc)
-    recipe.author = extract_author(doc)
-    recipe.ingredients = extract_ingredients(doc)
-    recipe.instructions = extract_instructions(doc)
-    recipe.url = :url
-
-    recipe
+    new(
+      name: extract_name(doc),
+      author: extract_author(doc),
+      ingredients: extract_ingredients(doc),
+      instructions: extract_instructions(doc)
+    )
   end
 
   private

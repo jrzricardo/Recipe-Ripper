@@ -13,11 +13,36 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
   end
+  
+  def create
+    @recipe = current_user.recipes.build(recipe_params)
+    if @recipe.save
+      redirect_to @recipe, notice: 'Recipe was successfully created.'
+    else
+      render :new
+    end
+  end
+  
+  def edit
+  end
+
+  def update
+    if @recipe.update(recipe_params)
+      redirect_to @recipe, notice: 'Recipe was successfully updated.'
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @recipe.destroy
+    redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
+  end
 
   def extract
     url = params[:url]
     extracted_recipe = Recipe.extract_from_url(url)
-    session[:extracted_recipe] = extracted_recipe.as_json
+    session[:extracted_recipe] = extracted_recipe.attributes
     redirect_to recipe_path(id: 'new')
   end
 
@@ -34,33 +59,6 @@ class RecipesController < ApplicationController
       end
     end
   end
-
-  def create
-    @recipe = current_user.recipes.build(recipe_params)
-    if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was successfully created.'
-    else
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: 'Recipe was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @recipe.destroy
-    redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
-  end
-
-  
 
   private
 
