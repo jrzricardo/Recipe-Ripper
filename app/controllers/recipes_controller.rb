@@ -2,9 +2,9 @@ class RecipesController < ApplicationController
   def index
   end
 
-  def extract
+  def rip
     url = params[:url]
-    @recipe = Recipe.extract_from_url(url)
+    @recipe = Recipe.rip_from_url(url)
     render :result
   end
 end

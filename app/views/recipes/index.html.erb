@@ -1,5 +1,5 @@
-<h1>Recipe Extractor</h1>
-<%= form_tag('/extract', method: :post) do %>
+<h1>Recipe Ripper</h1>
+<%= form_tag('/rip', method: :post) do %>
   <%= url_field_tag :url, nil, placeholder: 'Enter recipe URL', required: true %>
-  <%= submit_tag 'Extract Recipe' %>
+  <%= submit_tag 'rip Recipe' %>
 <% end %>
