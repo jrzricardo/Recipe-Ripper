@@ -1,5 +1,20 @@
+# == Schema Information
+#
+# Table name: recipes
+#
+#  id           :integer          not null, primary key
+#  author       :string
+#  ingredients  :text
+#  instructions :text
+#  name         :string
+#  serving_size :string
+#  url          :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 require 'nokogiri'
 require 'httparty'
+require_relative 'concerns/recipe_rippers'
 
 class Recipe < ApplicationRecord
   include RecipeRippers
@@ -11,13 +26,13 @@ class Recipe < ApplicationRecord
     doc = Nokogiri::HTML(response.body)
 
     recipe = self.new
-    recipe.name = rip_name(doc)
-    recipe.author = rip_author(doc)
-    recipe.ingredients = rip_ingredients(doc)
-    recipe.instructions = rip_instructions(doc)
-    recipe.serving_size = rip_serving_size(doc)
+    recipe.name = recipe.rip_name(doc)
+    recipe.author = recipe.rip_author(doc)
+    recipe.ingredients = recipe.rip_ingredients(doc)
+    recipe.instructions = recipe.rip_instructions(doc)
+    recipe.serving_size = recipe.rip_serving_size(doc)
     recipe.url = url
 
-    recipe
+    return recipe
   end
 end
