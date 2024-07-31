@@ -19,6 +19,10 @@ require_relative 'concerns/recipe_rippers'
 class Recipe < ApplicationRecord
   include RecipeRippers
   
+  has_many :recipe_books, dependent: :destroy
+  has_many :users, through: :recipe_books
+
+  
   attr_accessor :name, :author, :ingredients, :instructions, :serving_size, :url
 
   def self.rip_from_url(url)
