@@ -1,11 +1,19 @@
-<h1>Recipes</h1>
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li>
-      <%= link_to recipe.name, recipe_path(recipe) %>
-      <% if user_signed_in? %>
-        <%= button_to 'Save to Recipe Book', save_recipe_path(recipe), method: :post %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<div class="container mt-4">
+  <h1 class="mb-4">Recipes</h1>
+  <div class="list-group">
+    <% @recipes.each do |recipe| %>
+      <div class="list-group-item list-group-item-action">
+        <%= link_to recipe_path(recipe), class: "text-decoration-none" do %>
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= recipe.name %></h5>
+            <small><%= time_ago_in_words(recipe.created_at) %> ago</small>
+          </div>
+          <p class="mb-1">Author: <%= recipe.author %></p>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= button_to 'Save to Recipe Book', save_recipe_path(recipe), method: :post, class: 'btn btn-sm btn-primary mt-2 float-end' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
