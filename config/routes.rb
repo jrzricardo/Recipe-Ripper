@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     post 'save', on: :member
   end
 
-  resources :recipe_books, only: [:index]
+  resources :recipe_books, only: [:index] do
+    delete 'delete', on: :member
+  end
 end
