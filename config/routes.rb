@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'home#index'
+  root to: 'landing#index'
+  get 'home', to: 'home#index'
 
   get 'rip_recipe', to: 'recipes#rip'
   # get "/recipes/:name" => "recipes/rip", as: :recipes_rip
