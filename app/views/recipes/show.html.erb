@@ -1,0 +1,24 @@
+Copy<h1><%= @recipe.name %></h1>
+
+<p>Author: <%= @recipe.author %></p>
+
+<p>Serving Size: <%= @recipe.serving_size %></p>
+
+<h2>Ingredients:</h2>
+<ul>
+  <% @recipe.ingredients_array.each do |ingredient| %>
+    <li><%= ingredient %></li>
+  <% end %>
+</ul>
+
+<h2>Instructions:</h2>
+<ol>
+  <% @recipe.instructions_array.each do |instruction| %>
+    <li><%= instruction %></li>
+  <% end %>
+</ol>
+
+<%= link_to 'Back to Recipes', recipes_path %>
+<% if user_signed_in? %>
+  <%= button_to 'Save to Recipe Book', save_recipe_path(@recipe), method: :post %>
+<% end %>

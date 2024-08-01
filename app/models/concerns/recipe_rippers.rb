@@ -95,9 +95,17 @@ module RecipeRippers
 
   def rip_list(doc, selectors)
     selectors.each do |selector|
-      items = doc.css(selector).map(&:text).map(&:strip).reject(&:empty?)
+      items = doc.css(selector).map do |item|
+        clean_text(item.text.strip)
+      end.reject(&:empty?)
       return items if items.any?
     end
     return []
+  end
+
+  private
+
+  def clean_text(text)
+    text.gsub(/^[▢□■●○•]+\s*/, '').strip
   end
 end

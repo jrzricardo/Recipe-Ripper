@@ -1,5 +1,11 @@
-<h1>Recipe Ripper</h1>
-<%= form_tag('/rip', method: :post) do %>
-  <%= url_field_tag :url, nil, placeholder: 'Enter recipe URL', required: true %>
-  <%= submit_tag 'rip Recipe' %>
-<% end %>
+<h1>Recipes</h1>
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li>
+      <%= link_to recipe.name, recipe_path(recipe) %>
+      <% if user_signed_in? %>
+        <%= button_to 'Save to Recipe Book', save_recipe_path(recipe), method: :post %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

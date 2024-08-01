@@ -34,6 +34,8 @@ module RailsTemplate
 
     config.action_controller.default_protect_from_forgery = false
 
+    config.active_record.schema_format = :sql
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
