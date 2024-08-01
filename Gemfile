@@ -84,6 +84,7 @@ gem "htmlbeautifier"
 gem "http"
 gem "sqlite3", "~> 1.4"
 gem "table_print"
+gem 'bootstrap', '~> 5.1.3'
 
 group :development do
   gem "annotate"
