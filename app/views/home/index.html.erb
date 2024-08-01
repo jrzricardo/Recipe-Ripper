@@ -2,6 +2,17 @@
 
 <% if user_signed_in? %>
   <p>Hello, <%= current_user.email %>!</p>
+
+  <%= form_tag(rip_recipe_path, method: :get) do %>
+    <div>
+      <%= label_tag(:url, "Enter Recipe URL:") %>
+      <%= text_field_tag(:url) %>
+    </div>
+    <div>
+      <%= submit_tag("Rip Recipe") %>
+    </div>
+  <% end %>
+
   <%= link_to 'View Recipes', recipes_path %>
   <%= link_to 'View Your Recipe Book', recipe_books_path %>
   <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
