@@ -1,10 +1,13 @@
-#!/usr/bin/env bash
-# exit on error
-set -o errexit
+#!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status.
+set -e
+
+# Install dependencies
 bundle install
 
-# For Ruby on Rails apps uncomment these lines to precompile assets and migrate your database.
-# bundle exec rake assets:precompile
-# bundle exec rake assets:clean
+# Run any other build steps here
+# For example, you might need to run database migrations
 # bundle exec rake db:migrate
+
+echo "Build successful!"

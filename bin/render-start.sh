@@ -1,11 +1,7 @@
-#!/usr/bin/env bash
-# exit on error
-set -o errexit
+#!/bin/bash
 
-# Uncomment the line depending on the framework you are deploying
+# Exit immediately if a command exits with a non-zero status.
+set -e
 
-# Sinatra
-# bundle exec rackup
-
-# Ruby on Rails
-bundle exec puma -C config/puma.rb
+# Start the Rails server
+bundle exec rails server -b 0.0.0.0 -p $PORT
