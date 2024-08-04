@@ -8,7 +8,7 @@
             <h5 class="mb-1"><%= recipe.name %></h5>
             <small><%= time_ago_in_words(recipe.created_at) %> ago</small>
           </div>
-          <p class="mb-1">Author: <%= recipe.author %></p>
+          <p class="mb-1">Source: <%= recipe.url %></p>
         <% end %>
         <% if user_signed_in? %>
           <%= button_to 'Save to Recipe Book', save_recipe_path(recipe), method: :post, class: 'btn btn-sm btn-primary mt-2 float-end' %>
