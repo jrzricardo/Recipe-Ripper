@@ -3,7 +3,7 @@ class RecipeBooksController < ApplicationController
 
   def index
     @recipes = current_user.recipes
-    render({ :template => "recipe_books/index" })
+    render 'index'
   end
 
   def delete
