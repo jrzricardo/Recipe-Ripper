@@ -1,10 +1,10 @@
 services:
-  - type: web
-    name: recipe-ripper # the name of this service, eg hello-world
-    env: ruby # this app is written in ruby
-    plan: free # make sure to set this to free or you'll get billed $$$
+  type: web
+    name: recipe-ripper
+    env: ruby
+    plan: free
     buildCommand: "bundle exec rake assets:precompile && ./bin/render-build.sh"
     startCommand: "./bin/render-start.sh"
-    envVars: # this section sets some ENV variables needed by Render for deployment
+    envVars:
       - key: SECRET_KEY_BASE
         generateValue: true
