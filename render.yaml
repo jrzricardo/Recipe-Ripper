@@ -1,9 +1,9 @@
 services:
-  type: web
+  - type: web
     name: recipe-ripper
     env: ruby
     plan: free
-    buildCommand: "bundle exec rake assets:precompile && ./bin/render-build.sh"
+    buildCommand: "./bin/render-build.sh"
     startCommand: "./bin/render-start.sh"
     envVars:
       - key: SECRET_KEY_BASE
