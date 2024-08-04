@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, only: [:save, :rip]
+  before_action :authenticate_user!, only: [:save]
 
   def index
     @recipes = Recipe.all
