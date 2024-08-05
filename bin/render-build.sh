@@ -6,5 +6,6 @@ bundle install
 
 # Precompile assets
 bundle exec rake assets:precompile
+bundle exec rails db:migrate
 
 echo "Build successful!"
