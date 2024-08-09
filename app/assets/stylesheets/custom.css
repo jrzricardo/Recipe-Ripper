@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=IM%20Fell%20French%20Canon:700|Chocolate%20Classical%20Sans:400');
+
+body {
+  background: #f9c1b9;
+  min-height: 100vh;
+  font-family: 'Chocolate Classical Sans';
+  font-weight: 400;
+  color: #e09794
+}
+
+.container {
+  background-color: #c94e42;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: white
+}
+
+.navbar {
+  background: linear-gradient(0deg, #f9c2bb, #f48f6b, #f94646) !important;
+  
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+}
+
+.navbar-brand:hover {
+  color: #f9c1b9 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #f9c1b9;
+}
+.form-control {
+  background-color: #f9c1b9;
+  border-color: #df8866;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary{
+  background-color: #d4462c;
+  border-color: #b73b25;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover{
+  background-color: #9c311e;
+  border-color: #b73b25;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary{
+  background-color: #ffd25c;
+  border-color: #ffd25c;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover{
+  background-color: #cea43b;
+  border-color: #cea43b;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item{
+  background-color: #f9c1b9;
+  color: #666666 !important;
+}
+
+.card{
+  background-color: #ee897a;
+}
+
+
+
+h1, h2, h3, h4, h5 {
+  font-family: 'IM Fell French Canon';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 3.366rem; /* 53.92px */}
+
+h2 {font-size: 2.525rem; /* 40.32px */}
+
+h3 {font-size: 1.894rem; /* 30.24px */}
+
+h4 {font-size: 1.421rem; /* 22.72px */}
+
+h5 {font-size: 1.066rem; /* 17.12px */}
+
+small {font-size: 0.600rem; /* 9.6px */
+  color: #666666 !important;;}
+
+.mb-1 {
+  color: #666666 !important;
+}
