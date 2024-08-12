@@ -46,14 +46,15 @@ body {
 }
 
 .btn-primary{
-  background-color: #d4462c;
-  border-color: #b73b25;
+
+  background-color: #7aa6ab;
+  border-color: #7aa6ab;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover{
-  background-color: #9c311e;
-  border-color: #b73b25;
+  background-color: #6b9497;
+  border-color: #6b9497;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -78,54 +79,39 @@ body {
   background-color: #ee897a;
 }
 
-.jumbotron {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 15px;
-  padding: 2rem;
+.card-body{
+  color: #666666
 }
-.jumbotron.bg-image {
+
+.modal{
+  color:#666666
+}
+
+.landing-background {
   background-image: url('landing_page_art.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
 
-.jumbotron.bg-image::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.jumbotron.bg-image .container {
-  position: relative;
-  z-index: 2;
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.35);
+  margin-bottom: 0;
+  padding: 100px 0;
 }
 
 .jumbotron h1, .jumbotron p {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.recipe-transform-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#features .col-md-4 {
-  padding: 2rem;
+#features .card {
+  background-color: rgba(255, 255, 255, 0.9);
   transition: transform 0.3s ease-in-out;
 }
 
-#features .col-md-4:hover {
+#features .card:hover {
   transform: translateY(-10px);
 }
 
