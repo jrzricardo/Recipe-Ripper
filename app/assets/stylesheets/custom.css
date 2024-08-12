@@ -58,15 +58,21 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.btn-primary:focus{
+  background-color: #5b7f82;
+  border-color:#5b7f82;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .btn-secondary{
-  background-color: #ffd25c;
-  border-color: #ffd25c;
+  background-color: #f4a931;
+  border-color: #f4a931;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary:hover{
-  background-color: #cea43b;
-  border-color: #cea43b;
+  background-color: #db9525;
+  border-color: #db9525;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
