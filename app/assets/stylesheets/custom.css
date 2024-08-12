@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=IM%20Fell%20French%20Canon:700|Chocolate%20Classical%20Sans:400');
+
+body {
+  background: #f9c1b9;
+  min-height: 100vh;
+  font-family: 'Chocolate Classical Sans';
+  font-weight: 400;
+  color: #e09794
+}
+
+.container {
+  background-color: #c94e42;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: white
+}
+
+.navbar {
+  background: linear-gradient(0deg, #f9c2bb, #f48f6b, #f94646) !important;
+  
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+}
+
+.navbar-brand:hover {
+  color: #f9c1b9 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #f9c1b9;
+}
+.form-control {
+  background-color: #f9c1b9;
+  border-color: #df8866;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary{
+
+  background-color: #7aa6ab;
+  border-color: #7aa6ab;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover{
+  background-color: #6b9497;
+  border-color: #6b9497;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:focus{
+  background-color: #5b7f82;
+  border-color:#5b7f82;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary{
+  background-color: #f4a931;
+  border-color: #f4a931;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover{
+  background-color: #db9525;
+  border-color: #db9525;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item{
+  background-color: #f9c1b9;
+  color: #666666 !important;
+}
+
+.card{
+  background-color: #ee897a;
+}
+
+.card-body{
+  color: #666666
+}
+
+.modal{
+  color:#666666
+}
+
+.landing-background {
+  background-image: url('landing_page_art.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.35);
+  margin-bottom: 0;
+  padding: 100px 0;
+}
+
+.jumbotron h1, .jumbotron p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#features .card {
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+#features .card:hover {
+  transform: translateY(-10px);
+}
+
+#features i {
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'IM Fell French Canon';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 3.366rem; /* 53.92px */}
+
+h2 {font-size: 2.525rem; /* 40.32px */}
+
+h3 {font-size: 1.894rem; /* 30.24px */}
+
+h4 {font-size: 1.421rem; /* 22.72px */}
+
+h5 {font-size: 1.066rem; /* 17.12px */}
+
+small {font-size: 0.600rem; /* 9.6px */
+  color: #666666 !important;;}
+
+.mb-1 {
+  color: #666666 !important;
+}
