@@ -42,6 +42,10 @@ This is a basic version of the app, that scrapes html sites. Future versions wil
 
 4. Recipe Ripper will return a recipe if one is present. 
 
+## Entity Relationship Diagram
+
+![ERD]
+
 ## Contributing
 
 Contributions are welcome and appreciated!
