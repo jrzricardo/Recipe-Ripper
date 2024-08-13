@@ -41,16 +41,6 @@ class Recipe < ApplicationRecord
   end
 
   def self.rip_from_url(url)
-    response = HTTParty.get(url)
-    doc = Nokogiri::HTML(response.body)
-
-    new_recipe = new(url:)
-    new_recipe.name = new_recipe.rip_name(doc)
-    new_recipe.author = new_recipe.rip_author(doc)
-    new_recipe.ingredients = new_recipe.rip_ingredients(doc).to_json
-    new_recipe.instructions = new_recipe.rip_instructions(doc).to_json
-    new_recipe.serving_size = new_recipe.rip_serving_size(doc)
-
-    new_recipe
+    RecipeRipperService.rip(url)
   end
 end
