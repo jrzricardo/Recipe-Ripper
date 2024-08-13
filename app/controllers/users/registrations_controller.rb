@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         if params[:recipe_id].present?
           recipe = Recipe.find_by(id: params[:recipe_id])
-          resource.recipe_books.create(recipe: recipe) if recipe
+          resource.recipe_books.create(recipe:) if recipe
           respond_with resource, location: recipe_books_path
         else
           respond_with resource, location: after_sign_up_path_for(resource)

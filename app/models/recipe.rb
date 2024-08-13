@@ -18,7 +18,7 @@ require_relative 'concerns/recipe_rippers'
 
 class Recipe < ApplicationRecord
   include RecipeRippers
-  
+
   has_many :recipe_books, dependent: :destroy
   has_many :users, through: :recipe_books
 
@@ -29,11 +29,12 @@ class Recipe < ApplicationRecord
   def instructions_array
     parse_json_or_split(instructions)
   end
-  
+
   private
 
   def parse_json_or_split(data)
     return [] if data.blank?
+
     JSON.parse(data)
   rescue JSON::ParserError
     data.split(/\s*,\s*/)
@@ -43,7 +44,7 @@ class Recipe < ApplicationRecord
     response = HTTParty.get(url)
     doc = Nokogiri::HTML(response.body)
 
-    new_recipe = new(url: url)
+    new_recipe = new(url:)
     new_recipe.name = new_recipe.rip_name(doc)
     new_recipe.author = new_recipe.rip_author(doc)
     new_recipe.ingredients = new_recipe.rip_ingredients(doc).to_json
