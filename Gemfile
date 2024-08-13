@@ -86,6 +86,7 @@ gem "sqlite3", "~> 1.4"
 gem "table_print"
 gem "simple_form"
 
+
 group :development do
   gem "annotate"
   gem "better_errors"
@@ -97,6 +98,7 @@ group :development do
   gem "rails-erd"
   gem "rufo"
   gem "specs_to_readme"
+  gem "rubocop", require: false
 end
 
 group :development, :test do
