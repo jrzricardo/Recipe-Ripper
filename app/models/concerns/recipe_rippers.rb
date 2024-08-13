@@ -10,10 +10,10 @@ module RecipeRippers
       '.recipe-header h1',
       '.recipe-name',
       'h1.post-title',
-      'h1',
+      'h1'
     ]
 
-    rip_text(doc, selectors, "Unknown Recipe Name")
+    rip_text(doc, selectors, 'Unknown Recipe Name')
   end
 
   def rip_author(doc)
@@ -30,8 +30,8 @@ module RecipeRippers
       '.author-link'
     ]
 
-    rip_text(doc, selectors, "Unknown Author")
-  end 
+    rip_text(doc, selectors, 'Unknown Author')
+  end
 
   def rip_ingredients(doc)
     selectors = [
@@ -48,7 +48,7 @@ module RecipeRippers
       '.ingred-list li',
       '.ingredient_list li'
     ]
-    
+
     rip_list(doc, selectors)
   end
 
@@ -82,7 +82,7 @@ module RecipeRippers
       '.recipe-yield'
     ]
 
-    rip_text(doc, selectors, "Unknown Serving Size")
+    rip_text(doc, selectors, 'Unknown Serving Size')
   end
 
   def rip_text(doc, selectors, default)
@@ -90,7 +90,7 @@ module RecipeRippers
       text = doc.at(selector)&.text&.strip
       return text if text.present?
     end
-    return default
+    default
   end
 
   def rip_list(doc, selectors)
@@ -100,7 +100,7 @@ module RecipeRippers
       end.reject(&:empty?)
       return items if items.any?
     end
-    return []
+    []
   end
 
   private

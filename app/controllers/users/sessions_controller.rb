@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
       if params[:recipe_id].present?
         recipe = Recipe.find_by(id: params[:recipe_id])
         if recipe
-          resource.recipe_books.create(recipe: recipe)
+          resource.recipe_books.create(recipe:)
           redirect_to recipe_books_path and return
         end
       end
