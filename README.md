@@ -9,6 +9,7 @@ This is a basic version of the app, that scrapes html sites. Future versions wil
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Entity Relationship Diagram](#entity_relationship_diagram)
 - [Contact](#contact)
 
 ## Installation
@@ -44,7 +45,7 @@ This is a basic version of the app, that scrapes html sites. Future versions wil
 
 ## Entity Relationship Diagram
 
-![ERD]
+![ERD](erd.png)
 
 ## Contributing
 
