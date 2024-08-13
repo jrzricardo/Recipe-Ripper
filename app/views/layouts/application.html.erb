@@ -37,9 +37,11 @@
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
+        
           <li class="nav-item">
             <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary', form: { data: { turbo_confirm: 'Are you sure you want to log out?' } } %>
           </li>
+
         <% else %>
           <li class="nav-item">
             <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>

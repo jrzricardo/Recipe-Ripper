@@ -1,17 +1,17 @@
 <div class="container mt-4">
   <h1 class="mb-4">Recipes</h1>
   <div class="list-group">
-    <% @recipes.each do |recipe| %>
+    <% (@recipes + @temp_recipes).each do |recipe| %>
       <div class="list-group-item list-group-item-action">
-        <%= link_to recipe_path(recipe), class: "text-decoration-none" do %>
+        <%= link_to recipe_path(recipe['id'] || recipe.id), class: "text-decoration-none" do %>
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><%= recipe.name %></h5>
-            <small><%= time_ago_in_words(recipe.created_at) %> ago</small>
+            <h5 class="mb-1"><%= recipe['name'] || recipe.name %></h5>
+            <small><%= time_ago_in_words(recipe['created_at'] || recipe.created_at) %> ago</small>
           </div>
-          <p class="mb-1">Source: <%= recipe.url %></p>
+          <p class="mb-1">Source: <%= recipe['url'] || recipe.url %></p>
         <% end %>
         <% if user_signed_in? %>
-          <%= button_to 'Save to Recipe Book', save_recipe_path(recipe), method: :post, class: 'btn btn-sm btn-primary mt-2 float-end' %>
+          <%= button_to 'Save to Recipe Book', save_recipe_path(recipe['id'] || recipe.id), method: :post, class: 'btn btn-sm btn-primary mt-2 float-end' %>
         <% end %>
       </div>
     <% end %>

@@ -3,17 +3,27 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @temp_recipes = session[:temp_recipes] || []
     render({ :template => "recipes/index" })
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(id: params[:id]) || 
+              (session[:temp_recipes] || []).find { |r| r['id'] == params[:id] } ||
+              Recipe.new(session[:temp_recipe])
     render({ :template => "recipes/show" })
   end
 
   def save
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(id: params[:id]) || Recipe.new(session[:temp_recipe])
+    
+    if @recipe.new_record?
+      @recipe.save
+    end
+
     current_user.recipe_books.create({ :recipe => @recipe })
+    session.delete(:temp_recipe)
+    remove_temp_recipe(@recipe)
     redirect_to recipe_books_path, notice: 'Recipe saved to your recipe book!'
   end
 
@@ -21,14 +31,13 @@ class RecipesController < ApplicationController
     url = params[:url]
     @recipe = Recipe.rip_from_url(url)
     
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe successfully ripped!' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if @recipe.valid?
+      @recipe.id = SecureRandom.uuid # Assign a temporary ID
+      session[:temp_recipe] = @recipe.attributes
+      add_temp_recipe(@recipe.attributes)
+      redirect_to recipe_path(@recipe.id), notice: 'Recipe successfully ripped!'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -36,5 +45,14 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :author, :ingredients, :instructions, :serving_size, :url)
+  end
+
+  def add_temp_recipe(recipe)
+    session[:temp_recipes] ||= []
+    session[:temp_recipes] << recipe
+  end
+
+  def remove_temp_recipe(recipe)
+    session[:temp_recipes]&.delete_if { |r| r['id'] == recipe.id }
   end
 end

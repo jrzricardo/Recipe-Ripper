@@ -1,13 +1,13 @@
 <div class="container mt-4">
   <div class="row mb-4">
     <div class="col-md-4 text-center">
-      <h1 class="display-6"><%= @recipe.name %></h1>
+      <h1 class="display-6"><%= @recipe['name'] || @recipe.name %></h1>
     </div>
     <div class="col-md-4 text-center">
-      <p class="lead">Serving Size: <%= @recipe.serving_size %></p>
+      <p class="lead">Serving Size: <%= @recipe['serving_size'] || @recipe.serving_size %></p>
     </div>
     <div class="col-md-4 text-center">
-      <p class="lead">Author: <%= @recipe.author %></p>
+      <p class="lead">Author: <%= @recipe['author'] || @recipe.author %></p>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
           <ul class="list-group list-group-flush">
-            <% @recipe.ingredients_array.each do |ingredient| %>
+            <% (@recipe['ingredients'] || @recipe.ingredients_array).each do |ingredient| %>
               <li class="list-group-item"><%= ingredient %></li>
             <% end %>
           </ul>
@@ -34,7 +34,7 @@
         </div>
         <div class="card-body">
           <ol class="list-group list-group-numbered">
-            <% @recipe.instructions_array.each do |instruction| %>
+            <% (@recipe['instructions'] || @recipe.instructions_array).each do |instruction| %>
               <li class="list-group-item"><%= instruction %></li>
             <% end %>
           </ol>
@@ -47,7 +47,7 @@
     <div class="col">
       <%= link_to 'Back to Recipes', recipes_path, class: 'btn btn-secondary me-2' %>
       <% if user_signed_in? %>
-        <%= button_to 'Save to Recipe Book', save_recipe_path(@recipe), method: :post, class: 'btn btn-primary' %>
+        <%= button_to 'Save to Recipe Book', save_recipe_path(@recipe['id'] || @recipe.id), method: :post, class: 'btn btn-primary' %>
       <% else %>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
           Save to Recipe Book

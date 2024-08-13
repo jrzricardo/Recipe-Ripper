@@ -22,6 +22,10 @@ class Recipe < ApplicationRecord
   has_many :recipe_books, dependent: :destroy
   has_many :users, through: :recipe_books
 
+  def persisted?
+    id.present?
+  end
+
   def ingredients_array
     parse_json_or_split(ingredients)
   end
