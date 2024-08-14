@@ -26,10 +26,10 @@ class RecipesController < ApplicationController
       if @recipe.save
         redirect_to @recipe, notice: 'Recipe successfully ripped!'
       else
-        redirect_to root_path, alert: 'Failed to save the recipe. Please try again.'
+        redirect_to home_path, alert: 'Failed to save the recipe. Please try again.'
       end
     else
-      redirect_to root_path, alert: 'Invalid URL. Please enter a valid recipe URL.'
+      redirect_to home_path, alert: 'Invalid URL. Please enter a valid recipe URL.'
     end
   end
 
