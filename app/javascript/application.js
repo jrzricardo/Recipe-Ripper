@@ -3,6 +3,8 @@ import { Turbo } from "@hotwired/turbo-rails"
 import "controllers"
 import "./controllers"
 import * as bootstrap from "bootstrap"
+import "./custom/url_validator"
+
 
 Turbo.session.drive = false
 
