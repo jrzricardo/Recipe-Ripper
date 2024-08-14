@@ -18,6 +18,8 @@ require_relative 'concerns/recipe_rippers'
 
 class Recipe < ApplicationRecord
   include RecipeRippers
+  validates :url, presence: true, format: { with: URI::regexp(%w[http https]), message: "must be a valid URL" }
+
 
   has_many :recipe_books, dependent: :destroy
   has_many :users, through: :recipe_books
