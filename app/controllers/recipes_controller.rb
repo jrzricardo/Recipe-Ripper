@@ -19,16 +19,17 @@ class RecipesController < ApplicationController
 
   def rip
     url = params[:url]
-    @recipe = Recipe.rip_from_url(url)
+    @recipe = Recipe.new(url: url)
 
-    respond_to do |format|
+    if @recipe.valid?
+      @recipe = Recipe.rip_from_url(url)
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe successfully ripped!' }
-        format.json { render :show, status: :created, location: @recipe }
+        redirect_to @recipe, notice: 'Recipe successfully ripped!'
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        redirect_to home_path, alert: 'Failed to save the recipe. Please try again.'
       end
+    else
+      redirect_to home_path, alert: 'Invalid URL. Please enter a valid recipe URL.'
     end
   end
 
