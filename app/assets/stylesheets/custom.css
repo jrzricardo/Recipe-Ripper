@@ -78,7 +78,7 @@ body {
 
 .list-group-item{
   background-color: #f9c1b9;
-  color: #666666 !important;
+  color: #404040 !important;
 }
 
 .card{
@@ -86,11 +86,11 @@ body {
 }
 
 .card-body{
-  color: #666666
+  color: #404040
 }
 
 .modal{
-  color:#666666
+  color:#404040
 }
 
 .landing-background {
@@ -143,8 +143,17 @@ h4 {font-size: 1.421rem; /* 22.72px */}
 h5 {font-size: 1.066rem; /* 17.12px */}
 
 small {font-size: 0.600rem; /* 9.6px */
-  color: #666666 !important;;}
+  color: #404040 !important;}
 
 .mb-1 {
-  color: #666666 !important;
+  color: #404040 !important;
+}
+
+.page-link {
+  color:#404040 !important;
+  background-color: #f9c1b9;
+}
+
+a {
+  color:#404040 !important;
 }
