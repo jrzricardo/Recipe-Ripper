@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:save]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.page(params[:page]).per(10)
     render({ template: 'recipes/index' })
   end
 

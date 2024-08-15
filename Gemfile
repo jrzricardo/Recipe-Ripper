@@ -85,6 +85,7 @@ gem 'nokogiri'
 gem 'simple_form'
 gem 'sqlite3', '~> 1.4'
 gem 'table_print'
+gem 'kaminari' 
 
 group :development do
   gem 'annotate'

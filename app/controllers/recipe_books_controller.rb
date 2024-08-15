@@ -2,7 +2,7 @@ class RecipeBooksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.page(params[:page]).per(10)
     render 'index'
   end
 
