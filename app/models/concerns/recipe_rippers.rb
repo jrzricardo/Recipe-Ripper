@@ -1,4 +1,5 @@
 module RecipeRippers
+  ##Commennt: Great Job! Good use of the concerns module to keep the code DRY and organized.
   def rip_name(doc)
     selectors = [
       'h1.entry-title',
