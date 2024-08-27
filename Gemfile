@@ -86,6 +86,7 @@ gem 'simple_form'
 gem 'sqlite3', '~> 1.4'
 gem 'table_print'
 gem 'kaminari' 
+gem 'rails-observers'
 
 group :development do
   gem 'annotate'
