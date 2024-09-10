@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module RailsTemplate
   class Application < Rails::Application
+    config.active_record.observers = :recipe_observer
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

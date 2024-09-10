@@ -22,11 +22,16 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(url: url)
 
     if @recipe.valid?
-      @recipe = Recipe.rip_from_url(url)
+      @recipe = Recipe.rip_from_url(url) 
       if @recipe.save
         redirect_to @recipe, notice: 'Recipe successfully ripped!'
       else
+        existing_recipe = Recipe.find_by(url: @recipe.url)
+        if existing_recipe
+          redirect_to existing_recipe, alert: 'Recipe has already been ripped.'
+        else
         redirect_to home_path, alert: 'Failed to save the recipe. Please try again.'
+        end
       end
     else
       redirect_to home_path, alert: 'Invalid URL. Please enter a valid recipe URL.'
