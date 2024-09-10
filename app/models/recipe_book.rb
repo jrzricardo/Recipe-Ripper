@@ -21,4 +21,9 @@
 class RecipeBook < ApplicationRecord
   belongs_to :user
   belongs_to :recipe
-end
+  
+  def self.remove_for_user(user, recipe_id)
+    recipe_book = user.recipe_books.find_by(recipe_id: recipe_id)
+    recipe_book&.destroy
+  end 
+end 
