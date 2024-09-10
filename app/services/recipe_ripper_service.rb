@@ -1,5 +1,7 @@
 require_relative '../models/concerns/recipe_rippers'
 
+# Comment: Nice. This is a good way to keep the controller thin and move the business logic to the service class.
+
 class RecipeRipperService
   include RecipeRippers
 
